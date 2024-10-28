@@ -1,0 +1,136 @@
+﻿@model HotelDetailViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Sona Template">
+    <meta name="keywords" content="Sona, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sona | Template</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="~/sona-master/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="~/sona-master/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="~/sona-master/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="~/sona-master/css/flaticon.css" type="text/css">
+    <link rel="stylesheet" href="~/sona-master/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="~/sona-master/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="~/sona-master/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="~/sona-master/css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="~/sona-master/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="~/sona-master/css/style.css" type="text/css">
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+    <!-- Breadcrumb Section Begin -->
+    <div class="breadcrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-text">
+                        <h2>Otel Detayları</h2>
+                        <div class="bt-option">
+                            <a href="./home.html">AnaSayfa</a>
+                            <span>Otel</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb Section End -->
+    <!-- Room Details Section Begin -->
+    <section class="room-details-section spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="room-details-item">
+                        <img src="@TempData["Photo"]">
+                        <div class="rd-text">
+                            <div class="rd-title">
+                                <h3>@Model.data.hotel_name</h3>
+                                <div class="rdt-right">
+                                    <div class="rating">
+                                        <i class="icon_star"></i>
+                                        <i class="icon_star"></i>
+                                        <i class="icon_star"></i>
+                                        <i class="icon_star"></i>
+                                        <i class="icon_star-half_alt"></i>
+                                    </div>
+                                    <a href="#">Booking Now</a>
+                                </div>
+                            </div>
+                            <h2><span>Available Rooms:/@Model.data.available_rooms</span></h2>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td class="r-o">Description:</td>
+                                        <td>@Model.data.address</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="r-o">Room Size : </td>
+                                        <td>@Model.data.average_room_size_for_ufi_m2 /m2</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="r-o">Default Language : </td>
+                                        <td>@Model.data.default_language</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="r-o">Include Breakfast: </td>
+                                        <td>@Model.data.hotel_include_breakfast</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="r-o">Family Friendly: </td>
+                                        <td>@Model.data.is_family_friendly</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <br />
+    <!-- Room Details Section End -->
+    <!-- Search model Begin -->
+    <div class="search-model">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="search-close-switch"><i class="icon_close"></i></div>
+            <form class="search-model-form">
+                <input type="text" id="search-input" placeholder="Search here.....">
+            </form>
+        </div>
+    </div>
+    <!-- Search model end -->
+    <!-- Js Plugins -->
+    <script src="~/sona-master/js/jquery-3.3.1.min.js"></script>
+    <script src="~/sona-master/js/bootstrap.min.js"></script>
+    <script src="~/sona-master/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/sona-master/js/jquery.nice-select.min.js"></script>
+    <script src="~/sona-master/js/jquery-ui.min.js"></script>
+    <script src="~/sona-master/js/jquery.slicknav.js"></script>
+    <script src="~/sona-master/js/owl.carousel.min.js"></script>
+    <script src="~/sona-master/js/main.js"></script>
+</body>
+
+</html>
