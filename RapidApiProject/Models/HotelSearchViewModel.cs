@@ -2,13 +2,11 @@
 {
     public class HotelSearchViewModel
     {
-        public string dest_id { get; set; }
-        public string city_name { get; set; }
-        public DateTime checkinDate { get; set; }
-        public DateTime checkoutDate { get; set; }
+        public string destID { get; set; }
+        public string cityName { get; set; }
+        public DateTime arrivalDate { get; set; }
+        public DateTime departureDate { get; set; }
         public int adultCount { get; set; }
-
         public int roomCount { get; set; }
-
     }
 }

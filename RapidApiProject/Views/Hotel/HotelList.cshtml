@@ -1,5 +1,4 @@
-﻿@model HotelSearchViewModel
-
+﻿@model List<HotelListViewModel.Hotel>
 @{
     Layout = null;
 }
@@ -39,7 +38,7 @@
     </div>
 
     <!-- Header Section Begin -->
-    <header class="header-section">
+    <header class="header-section header-normal">
 
         <div class="menu-item">
             <div class="container">
@@ -55,16 +54,16 @@
                         <div class="nav-menu">
                             <nav class="mainmenu">
                                 <ul>
-                                    <li class="active"><a href="./index.html">Ana Sayfa</a></li>
-                                    <li><a href="./rooms.html">Odalar</a></li>
+                                    <li><a href="./index.html">AnaSayfa</a></li>
+                                    <li class="active"><a href="./rooms.html">Odalar</a></li>
                                     <li><a href="./about-us.html">Hakkımızda</a></li>
                                     <li>
-                                        <a href="./pages.html">Sayfalar</a>
+                                        <a href="./pages.html">Pages</a>
                                         <ul class="dropdown">
-                                            <li><a href="./room-details.html">Oda Detayları</a></li>
-                                            <li><a href="./blog-details.html">Blog Detayları</a></li>
-                                            <li><a href="#">Aile Odası</a></li>
-                                            <li><a href="#">Özel Oda</a></li>
+                                            <li><a href="./room-details.html">Room Details</a></li>
+                                            <li><a href="./blog-details.html">Blog Details</a></li>
+                                            <li><a href="#">Family Room</a></li>
+                                            <li><a href="#">Premium Room</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="./blog.html">Yeni</a></li>
@@ -81,69 +80,72 @@
         </div>
     </header>
     <!-- Header End -->
-    <!-- Hero Section Begin -->
-    <section class="hero-section">
+    <!-- Breadcrumb Section Begin -->
+    <div class="breadcrumb-section">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6">
-                    <div class="hero-text">
-                        <h1>Sona A Luxury Hotel</h1>
-                        <p>
-                            Aradığınız özelliklerde otelleri bulup yerini rezervasyon yaptır..
-                        </p>
-                        <a href="#" class="primary-btn">Hemen Keşfet</a>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-5 offset-xl-2 offset-lg-1">
-                    <div class="booking-form">
-                        <h3>Otel Arama</h3>
-
-                        <form method="post" asp-action="Index" asp-controller="HotelSearch">
-                            <div class="check-date">
-                                <label for="date-in">Şehir</label>
-                                <input type="text" class="select-options" asp-for="city_name">
-                            </div>
-                            <div class="check-date">
-                                <label for="date-in">Giriş Tarihi:</label>
-                                <input type="text" class="date-input" asp-for="checkinDate">
-                                <i class="icon_calendar"></i>
-                            </div>
-                            <div class="check-date">
-                                <label for="date-out">Çıkış Tarihi:</label>
-                                <input type="text" class="date-input" asp-for="checkoutDate">
-                                <i class="icon_calendar"></i>
-                            </div>
-                            <div class="select-option">
-                                <label for="guest">Yetişkin Sayısı:</label>
-                                <select id="guest">
-                                    <option value="">1 Yetişkin</option>
-                                    <option value="">2 Yetişkin</option>
-                                    <option value="">3 Yetişkin</option>
-                                    <option value="">4 Yetişkin</option>
-                                    <option value="">5 Yetişkin</option>
-                                </select>
-                            </div>
-                            <div class="select-option">
-                                <label for="room">Oda Tipi:</label>
-                                <select id="room">
-                                    <option value="">Tek Kişilik</option>
-                                    <option value="">Çift Kişilik </option>
-                                    <option value="">Daha Fazlası..</option>
-                                </select>
-                            </div>
-                            <button type="submit">Otelleri Listele</button>
-                        </form>
+                <div class="col-lg-12">
+                    <div class="breadcrumb-text">
+                        <h2>Otel List</h2>
+                        <div class="bt-option">
+                            <a href="./home.html">Anasayfa</a>
+                            <span>Ootel</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="hero-slider owl-carousel">
-            <div class="hs-item set-bg" data-setbg="/sona-master/img/hero/hero-1.jpg"></div>
-            <div class="hs-item set-bg" data-setbg="/sona-master/img/hero/hero-2.jpg"></div>
-            <div class="hs-item set-bg" data-setbg="/sona-master/img/hero/hero-3.jpg"></div>
+
+    </div>
+    <!-- Breadcrumb Section End -->
+    <!-- Rooms Section Begin -->
+    <section class="rooms-section spad">
+        <div class="container">
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <div class="col-lg-4 col-md-6">
+                        <div class="room-item">
+                            <img src="@item.property.photoUrls[0].Replace("square60", "square1080")" style="max-width:100%;height:auto;" alt="">
+                            <div class="ri-text">
+                                <h4>@item.property.name</h4>
+                                <h3>@item.property.reviewCount $<span>/@item.property.currency</span> </h3>
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td class="r-o">Puan:</td>
+                                            <td>@item.property.reviewScore</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="r-o">Sınıf:</td>
+                                            <td>@item.property.reviewScoreWord</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="r-o">Giriş Tarihi:</td>
+                                            <td>@item.property.checkinDate</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="r-o">Çıkış Tarihi:</td>
+                                            <td>@item.property.checkoutDate</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <form method="post" asp-action="HotelDetail">
+                                    <input type="hidden" name="hotelID" value="@item.hotel_id" />
+                                    <input type="hidden" name="arrivalDate" value="@item.property.checkinDate" />
+                                    <input type="hidden" name="departureDate" value="@item.property.checkoutDate" />
+                                    <button class="btn primary-btn">Detaylar >></button>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
         </div>
     </section>
-    <!-- Hero Section End -->
+    <!-- Rooms Section End -->
     <!-- Search model Begin -->
     <div class="search-model">
         <div class="h-100 d-flex align-items-center justify-content-center">
